@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wallpaper
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="pl.mateuszkraska.gameoflife_livewallpaper.SettingsActivity"
+    android:thumbnail="@drawable/icon"
+    android:label="@string/wallpaper_name">
+</wallpaper>

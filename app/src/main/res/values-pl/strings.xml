@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gra Życie - Żywa Tapeta</string>
+    <string name="wallpaper_name">Gra Życie</string>
+    <string name="background_color">Kolor tła:</string>
+    <string name="field_color">Kolor pól:</string>
+    <string name="apply">Zatwierdź</string>
+</resources>

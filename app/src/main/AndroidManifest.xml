@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="pl.mateuszkraska.gameoflife_livewallpaper">
+
+    <uses-feature
+        android:name="android.software.live_wallpaper"
+        android:required="true">
+    </uses-feature>
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@drawable/icon"
+        android:allowBackup="true">
+        <service
+            android:name=".GameOfLifeLiveWallpaperService"
+            android:enabled="true"
+            android:label="Game of Life Live Wallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper">
+            </meta-data>
+
+        </service>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
+
+    </application>
+
+</manifest>

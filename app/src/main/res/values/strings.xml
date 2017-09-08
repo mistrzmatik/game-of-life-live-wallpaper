@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Game of Life - Live Wallpaper</string>
+    <string name="wallpaper_name">Game of Life</string>
+    <string name="background_color">Background color:</string>
+    <string name="field_color">Field color:</string>
+    <string name="apply">Apply</string>
+</resources>
