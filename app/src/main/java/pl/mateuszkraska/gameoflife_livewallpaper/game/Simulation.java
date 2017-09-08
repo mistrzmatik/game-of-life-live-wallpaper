@@ -65,19 +65,4 @@ public class Simulation {
         return fieldStates;
     }
 
-    @Override
-    public String toString() {
-        for( int x = 0 ; x < persons.length ; x++ ){
-            for( int y = 0 ; y < persons[0].length ; y++ ){
-                if( persons[x][y].isLive() ){
-                    System.out.print("o");
-                }else{
-                    System.out.print("x");
-                }
-            }
-            System.out.println();
-        }
-        System.out.println("--------------------------------------------------");
-        return super.toString();
-    }
 }

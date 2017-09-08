@@ -8,7 +8,7 @@ public class FieldState {
         this.isActive = isActive;
     }
 
-    public boolean isActive() {
+    boolean isActive() {
         return isActive;
     }
 }

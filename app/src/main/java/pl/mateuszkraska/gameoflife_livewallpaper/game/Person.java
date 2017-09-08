@@ -6,12 +6,12 @@ class Person {
     private boolean isLive;
     private boolean isLock;
 
-    public Person( Coordinates coordinates , boolean isLive ){
+    Person( Coordinates coordinates , boolean isLive ){
         this.coordinates = coordinates;
         this.isLive = isLive;
     }
 
-    public int countOfNeighbor( Person[][] persons ){
+    int countOfNeighbor( Person[][] persons ){
         int countOfNeighbor = 0;
         if( coordinates.getX() != 0 ){
             if(persons[coordinates.getX()-1][coordinates.getY()].isLive){
