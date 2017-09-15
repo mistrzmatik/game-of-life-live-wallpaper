@@ -29,14 +29,14 @@ public class Simulation {
 
         for( int x = 0 ; x < persons.length ; x++ ){
             for( int y = 0 ; y < persons[0].length ; y++ ){
-                if( persons[x][y].isLock() ){
-                    continue;
-                }else if( !persons[x][y].isLive() && numberOfNeighbors[x][y] == 3 ){
-                    persons[x][y].live();
-                }else if( persons[x][y].isLive() && (numberOfNeighbors[x][y] == 2 || numberOfNeighbors[x][y] == 3) ){
-                    persons[x][y].live();
-                }else{
-                    persons[x][y].die();
+                if( !persons[x][y].isLock() ) {
+                    if (!persons[x][y].isLive() && numberOfNeighbors[x][y] == 3) {
+                        persons[x][y].live();
+                    } else if (persons[x][y].isLive() && (numberOfNeighbors[x][y] == 2 || numberOfNeighbors[x][y] == 3)) {
+                        persons[x][y].live();
+                    } else {
+                        persons[x][y].die();
+                    }
                 }
             }
         }
@@ -44,15 +44,21 @@ public class Simulation {
     }
 
     public void makeFieldAliveAndLock( Coordinates coordinates ){
-        persons[coordinates.getX()][coordinates.getY()].live();
-        persons[coordinates.getX()][coordinates.getY()].lock();
+        if(coordinatesAreInArray(coordinates)){
+            persons[coordinates.getX()][coordinates.getY()].live();
+            persons[coordinates.getX()][coordinates.getY()].lock();
+        }
     }
     public void unlockAll(){
-        for( int x = 0 ; x < persons.length ; x++ ){
-            for( int y = 0 ; y < persons[0].length ; y++ ){
-                persons[x][y].unlock();
+        for (Person[] person : persons) {
+            for (int y = 0; y < persons[0].length; y++) {
+                person[y].unlock();
             }
         }
+    }
+
+    private boolean coordinatesAreInArray( Coordinates coordinates  ){
+        return coordinates.getX() < persons.length && coordinates.getY() < persons[0].length;
     }
 
     public FieldState[][] getFieldStates(){
