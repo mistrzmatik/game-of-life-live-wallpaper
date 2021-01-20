@@ -6,49 +6,49 @@ class Person {
     private boolean isLive;
     private boolean isLock;
 
-    Person( Coordinates coordinates , boolean isLive ){
+    Person(Coordinates coordinates , boolean isLive){
         this.coordinates = coordinates;
         this.isLive = isLive;
     }
 
-    int countOfNeighbor( Person[][] persons ){
+    int countOfNeighbor(Person[][] persons){
         int countOfNeighbor = 0;
-        if( coordinates.getX() != 0 ){
+        if(coordinates.getX() != 0){
             if(persons[coordinates.getX()-1][coordinates.getY()].isLive){
                 countOfNeighbor++;
             }
         }
-        if( coordinates.getY() != 0 ){
+        if(coordinates.getY() != 0){
             if(persons[coordinates.getX()][coordinates.getY()-1].isLive){
                 countOfNeighbor++;
             }
         }
-        if( coordinates.getX() != persons.length-1){
+        if(coordinates.getX() != persons.length-1){
             if(persons[coordinates.getX()+1][coordinates.getY()].isLive){
                 countOfNeighbor++;
             }
         }
-        if( coordinates.getY() != persons[0].length-1 ){
+        if(coordinates.getY() != persons[0].length-1){
             if(persons[coordinates.getX()][coordinates.getY()+1].isLive){
                 countOfNeighbor++;
             }
         }
-        if( coordinates.getX() != 0 && coordinates.getY() != 0 ){
+        if(coordinates.getX() != 0 && coordinates.getY() != 0){
             if(persons[coordinates.getX()-1][coordinates.getY()-1].isLive){
                 countOfNeighbor++;
             }
         }
-        if( coordinates.getX() != 0 && coordinates.getY() != persons[0].length-1 ){
+        if(coordinates.getX() != 0 && coordinates.getY() != persons[0].length-1){
             if(persons[coordinates.getX()-1][coordinates.getY()+1].isLive){
                 countOfNeighbor++;
             }
         }
-        if( coordinates.getX() != persons.length-1 && coordinates.getY() != 0 ){
+        if(coordinates.getX() != persons.length-1 && coordinates.getY() != 0){
             if(persons[coordinates.getX()+1][coordinates.getY()-1].isLive){
                 countOfNeighbor++;
             }
         }
-        if( coordinates.getX() != persons.length-1 && coordinates.getY() != persons[0].length-1 ){
+        if(coordinates.getX() != persons.length-1 && coordinates.getY() != persons[0].length-1){
             if(persons[coordinates.getX()+1][coordinates.getY()+1].isLive){
                 countOfNeighbor++;
             }
@@ -75,5 +75,6 @@ class Person {
     boolean isLive() {
         return isLive;
     }
+
     boolean isLock(){return isLock;}
 }

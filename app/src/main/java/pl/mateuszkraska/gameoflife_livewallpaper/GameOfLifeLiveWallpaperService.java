@@ -17,11 +17,11 @@ public class GameOfLifeLiveWallpaperService extends WallpaperService {
 
     public class WallpaperEngine extends WallpaperService.Engine implements SharedPreferences.OnSharedPreferenceChangeListener{
 
-        private long updateTime = 80;
-        private GridPainter gridPainter;
-        private Simulation simulation;
-        private Handler handler;
-        private Runnable runner;
+        private final long updateTime = 80;
+        private final GridPainter gridPainter;
+        private final Simulation simulation;
+        private final Handler handler;
+        private final Runnable runner;
 
         public WallpaperEngine() {
             PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).registerOnSharedPreferenceChangeListener(this);
@@ -32,7 +32,7 @@ public class GameOfLifeLiveWallpaperService extends WallpaperService {
                     PreferencesKeys.DEFAULT_FIELD_COLOR);
             refreshInformation(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
 
-            simulation = new Simulation(61,100);
+            simulation = new Simulation(61,115);
 
             handler = new Handler();
             runner = new Runnable() {
@@ -47,7 +47,7 @@ public class GameOfLifeLiveWallpaperService extends WallpaperService {
 
         @Override
         public void onVisibilityChanged(boolean visible) {
-            if( visible ){
+            if(visible){
                 handler.postDelayed(runner,updateTime);
             }else{
                 handler.removeCallbacks(runner);
@@ -78,11 +78,10 @@ public class GameOfLifeLiveWallpaperService extends WallpaperService {
             refreshInformation(sharedPreferences);
         }
 
-        private void refreshInformation( SharedPreferences sharedPreferences ){
-            gridPainter.setBackgroundColor( sharedPreferences.getInt(PreferencesKeys.BACKGROUND_COLOR_KEY , PreferencesKeys.DEFAULT_BACKGROUND_COLOR) );
-            gridPainter.setFieldColor( sharedPreferences.getInt(PreferencesKeys.FIELD_COLOR_KEY , PreferencesKeys.DEFAULT_FIELD_COLOR) );
+        private void refreshInformation(SharedPreferences sharedPreferences){
+            gridPainter.setBackgroundColor(sharedPreferences.getInt(PreferencesKeys.BACKGROUND_COLOR_KEY , PreferencesKeys.DEFAULT_BACKGROUND_COLOR));
+            gridPainter.setFieldColor(sharedPreferences.getInt(PreferencesKeys.FIELD_COLOR_KEY , PreferencesKeys.DEFAULT_FIELD_COLOR));
         }
 
     }
-
 }

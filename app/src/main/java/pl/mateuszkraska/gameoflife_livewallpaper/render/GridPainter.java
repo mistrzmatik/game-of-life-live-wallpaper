@@ -8,11 +8,11 @@ import pl.mateuszkraska.gameoflife_livewallpaper.game.Coordinates;
 
 public class GridPainter {
 
-    private SurfaceHolder surfaceHolder;
-    private Paint paint;
+    private final SurfaceHolder surfaceHolder;
+    private final Paint paint;
 
     private int sizeOfSquare;
-    private int numberOfBlocksInWidth;
+    private final int numberOfBlocksInWidth;
     private int backgroundColor;
 
     public GridPainter(SurfaceHolder surfaceHolder, int numberOfBlocksInWidth, int backgroundColor, int fieldColor){
@@ -36,7 +36,7 @@ public class GridPainter {
     }
 
     private void drawField(Canvas canvas, int x , int y){
-        canvas.drawPoint(x* sizeOfSquare,y* sizeOfSquare,paint);
+        canvas.drawPoint(x*sizeOfSquare,y*sizeOfSquare,paint);
     }
 
     public void draw( FieldState[][] mapOdStates ){
@@ -48,8 +48,8 @@ public class GridPainter {
                 sizeOfSquare = canvas.getWidth()/numberOfBlocksInWidth;
                 paint.setStrokeWidth(sizeOfSquare);
                 canvas.drawColor(backgroundColor);
-                for( int x = 0 ; x < mapOdStates.length ; x++ ){
-                    for( int y = 0 ; y < mapOdStates[0].length ; y++ ){
+                for(int x = 0 ; x < mapOdStates.length ; x++){
+                    for(int y = 0 ; y < mapOdStates[0].length ; y++){
                         if(mapOdStates[x][y].isActive()){
                             drawField(canvas,x,y);
                         }
@@ -63,15 +63,11 @@ public class GridPainter {
 
     }
 
-    public Coordinates calculateFromInput( float x , float y ){
+    public Coordinates calculateFromInput(float x , float y){
         if(sizeOfSquare != 0){
             return new Coordinates((int)x/ sizeOfSquare,(int)y/ sizeOfSquare);
         }else{
             return new Coordinates(0,0);
         }
-
     }
-
-
-
 }

@@ -2,7 +2,7 @@ package pl.mateuszkraska.gameoflife_livewallpaper.render;
 
 public class FieldState {
 
-    private boolean isActive;
+    private final boolean isActive;
 
     public FieldState(boolean isActive) {
         this.isActive = isActive;

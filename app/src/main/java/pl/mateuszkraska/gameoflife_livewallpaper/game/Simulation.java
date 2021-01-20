@@ -6,13 +6,13 @@ import pl.mateuszkraska.gameoflife_livewallpaper.render.FieldState;
 
 public class Simulation {
 
-    private Person[][] persons;
+    private final Person[][] persons;
 
     public Simulation( int sizeX , int sizeY ){
         persons = new Person[sizeX][sizeY];
         Random random = new Random();
-        for( int x = 0 ; x < persons.length ; x++ ){
-            for( int y = 0 ; y < persons[0].length ; y++ ){
+        for(int x = 0 ; x < persons.length ; x++){
+            for(int y = 0 ; y < persons[0].length ; y++){
                 persons[x][y] = new Person(new Coordinates(x,y),random.nextBoolean());
             }
         }
@@ -21,15 +21,15 @@ public class Simulation {
     public void makeNextGeneration(){
 
         int[][] numberOfNeighbors = new int[persons.length][persons[0].length];
-        for( int x = 0 ; x < persons.length ; x++ ){
-            for( int y = 0 ; y < persons[0].length ; y++ ){
+        for(int x = 0 ; x < persons.length ; x++){
+            for(int y = 0 ; y < persons[0].length ; y++){
                 numberOfNeighbors[x][y] = persons[x][y].countOfNeighbor(persons);
             }
         }
 
-        for( int x = 0 ; x < persons.length ; x++ ){
-            for( int y = 0 ; y < persons[0].length ; y++ ){
-                if( !persons[x][y].isLock() ) {
+        for(int x = 0 ; x < persons.length ; x++){
+            for(int y = 0 ; y < persons[0].length ; y++){
+                if(!persons[x][y].isLock()) {
                     if (!persons[x][y].isLive() && numberOfNeighbors[x][y] == 3) {
                         persons[x][y].live();
                     } else if (persons[x][y].isLive() && (numberOfNeighbors[x][y] == 2 || numberOfNeighbors[x][y] == 3)) {
@@ -43,7 +43,7 @@ public class Simulation {
 
     }
 
-    public void makeFieldAliveAndLock( Coordinates coordinates ){
+    public void makeFieldAliveAndLock(Coordinates coordinates){
         if(coordinatesAreInArray(coordinates)){
             persons[coordinates.getX()][coordinates.getY()].live();
             persons[coordinates.getX()][coordinates.getY()].lock();
@@ -57,7 +57,7 @@ public class Simulation {
         }
     }
 
-    private boolean coordinatesAreInArray( Coordinates coordinates  ){
+    private boolean coordinatesAreInArray(Coordinates coordinates){
         return coordinates.getX() < persons.length && coordinates.getY() < persons[0].length;
     }
 
@@ -70,5 +70,4 @@ public class Simulation {
         }
         return fieldStates;
     }
-
 }

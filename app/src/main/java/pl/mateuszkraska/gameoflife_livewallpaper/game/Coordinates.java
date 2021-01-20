@@ -2,7 +2,7 @@ package pl.mateuszkraska.gameoflife_livewallpaper.game;
 
 public class Coordinates {
 
-    private int x,y;
+    private final int x, y;
 
     public Coordinates(int x, int y) {
         this.x = x;
